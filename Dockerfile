@@ -1,11 +1,11 @@
 FROM aoberegg/docker-pmdrrnode
 
 RUN apt-get remove -y nodejs
-RUN curl -sL https://deb.nodesource.com/setup_6.x | -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_6.x
 RUN apt-get install -y nodejs
 
 # ENV FIREFOX_VERSION=59.0.2 PHANTOMJS_VERSION=2.1.1 CHROME_VERSION=stable_current \
-#     SCREEN_WIDTH=1360 SCREEN_HEIGHT=1020 SCREEN_DEPTH=24
+#     SCREEN_WIDTH=1000 SCREEN_HEIGHT=800 SCREEN_DEPTH=24
 
 # RUN rm -rf /var/lib/apt/lists/* && apt-get -q update &&\
 #   apt-get install -qy --force-yes xvfb fontconfig bzip2 curl \
