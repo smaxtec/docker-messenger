@@ -17,7 +17,7 @@ RUN rm -rf /var/lib/apt/lists/* && apt-get -q update &&\
 
 RUN curl --silent --show-error --location --fail --retry 3 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOMJS_VERSION}-linux-x86_64.tar.bz2 | tar xjfO - phantomjs-${PHANTOMJS_VERSION}-linux-x86_64/bin/phantomjs > /usr/bin/phantomjs && chmod +x /usr/bin/phantomjs
 
-RUN curl --silent --show-error --location --fail --retry 3 https://dl.google.com/linux/direct/google-chrome-${CHROME_VERSION}_amd64.deb > /tmp/google-chrome-${CHROME_VERSION}_amd64.deb && dpkg -i /tmp/google-chrome-${CHROME_VERSION}_amd64.deb && rm /tmp/google-chrome-${CHROME_VERSION}_amd64.deb
+# RUN curl --silent --show-error --location --fail --retry 3 https://dl.google.com/linux/direct/google-chrome-${CHROME_VERSION}_amd64.deb > /tmp/google-chrome-${CHROME_VERSION}_amd64.deb && dpkg -i /tmp/google-chrome-${CHROME_VERSION}_amd64.deb && rm /tmp/google-chrome-${CHROME_VERSION}_amd64.deb
 
 RUN curl --silent --show-error --location --fail --retry 3 http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${FIREFOX_VERSION}/linux-x86_64/en-US/firefox-${FIREFOX_VERSION}.tar.bz2 > /tmp/firefox-${FIREFOX_VERSION}.tar.bz2 && mkdir /opt/firefox-${FIREFOX_VERSION} && tar xjf /tmp/firefox-${FIREFOX_VERSION}.tar.bz2 -C /opt/firefox-${FIREFOX_VERSION} && rm /tmp/firefox-${FIREFOX_VERSION}.tar.bz2
 
@@ -25,7 +25,7 @@ RUN echo '#!/bin/bash' > /usr/bin/firefox &&\
     echo 'export $(dbus-launch) && set | grep -i dbus && exec xvfb-run -a -s "-screen 0 ${SCREEN_WIDTH}x${SCREEN_HEIGHT}x${SCREEN_DEPTH} -ac +extension RANDR" /opt/firefox-${FIREFOX_VERSION}/firefox/firefox "$@"' >> /usr/bin/firefox &&\
     chmod +x /usr/bin/firefox
 
-RUN mv /opt/google/chrome/google-chrome /opt/google/chrome/google-chrome.orig &&\
-    echo '#!/bin/bash' > /opt/google/chrome/google-chrome &&\
-    echo 'exec xvfb-run -a -s "-screen 0 ${SCREEN_WIDTH}x${SCREEN_HEIGHT}x${SCREEN_DEPTH} -ac +extension RANDR" /opt/google/chrome/google-chrome.orig --no-sandbox "$@"' >> /opt/google/chrome/google-chrome &&\
-    chmod +x /opt/google/chrome/google-chrome
+# RUN mv /opt/google/chrome/google-chrome /opt/google/chrome/google-chrome.orig &&\
+#     echo '#!/bin/bash' > /opt/google/chrome/google-chrome &&\
+#     echo 'exec xvfb-run -a -s "-screen 0 ${SCREEN_WIDTH}x${SCREEN_HEIGHT}x${SCREEN_DEPTH} -ac +extension RANDR" /opt/google/chrome/google-chrome.orig --no-sandbox "$@"' >> /opt/google/chrome/google-chrome &&\
+#     chmod +x /opt/google/chrome/google-chrome
