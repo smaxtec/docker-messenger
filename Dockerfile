@@ -4,11 +4,17 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 # Install nvm and specific nodeversion
 ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION 6.11.0
+
+WORKDIR $NVM_DIR
+
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash \
-    && source $NVM_DIR/nvm.sh \
+    && . $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
     && nvm use default
+
+ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 RUN node --version
 
 ENV FIREFOX_VERSION=59.0.2 PHANTOMJS_VERSION=2.1.1 CHROME_VERSION=stable_current \
