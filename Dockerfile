@@ -19,6 +19,7 @@ RUN node --version
 
 ENV FIREFOX_VERSION=59.0.2 PHANTOMJS_VERSION=2.1.1 CHROME_VERSION=stable_current \
     SCREEN_WIDTH=1000 SCREEN_HEIGHT=800 SCREEN_DEPTH=24
+ENV DISPLAY=:99
 
 RUN rm -rf /var/lib/apt/lists/* && apt-get -q update &&\
   apt-get install -qy --force-yes xvfb fontconfig bzip2 curl \
