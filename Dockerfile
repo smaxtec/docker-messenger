@@ -1,9 +1,7 @@
 FROM aoberegg/docker-pmdrrnode
 
-RUN apt-get remove -y nodejs
-RUN curl -sL https://deb.nodesource.com/setup_6.x
-RUN apt-get install -y nodejs
-RUN apt-get install -y npm
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+RUN export NVM_DIR="$HOME/.nvm" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 ENV FIREFOX_VERSION=59.0.2 PHANTOMJS_VERSION=2.1.1 CHROME_VERSION=stable_current \
     SCREEN_WIDTH=1000 SCREEN_HEIGHT=800 SCREEN_DEPTH=24
