@@ -43,9 +43,7 @@ RUN echo '#!/bin/bash' > /usr/bin/firefox &&\
 RUN apt-get update
 RUN apt-get install -y chromium-browser
 
-ADD xvfb-chromium /usr/bin/xvfb-chromium
-RUN ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome
-RUN ln -s /usr/bin/xvfb-chromium /usr/bin/chromium-browser
+RUN ln -s /usr/bin/chromium-browser /usr/bin/google-chrome
 
 # RUN mv /opt/google/chrome/google-chrome /opt/google/chrome/google-chrome.orig &&\
 #     echo '#!/bin/bash' > /opt/google/chrome/google-chrome &&\
