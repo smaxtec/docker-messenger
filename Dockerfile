@@ -41,7 +41,7 @@ RUN echo '#!/bin/bash' > /usr/bin/firefox &&\
     chmod +x /usr/bin/firefox
 
 RUN apt-get update
-RUN apt-get install -y chromium
+RUN apt-get install -y chromium-browser
 
 ADD xvfb-chromium /usr/bin/xvfb-chromium
 RUN ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome
