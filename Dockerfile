@@ -40,6 +40,12 @@ RUN echo '#!/bin/bash' > /usr/bin/firefox &&\
     echo 'export $(dbus-launch) && set | grep -i dbus && exec xvfb-run -a -s "-screen 0 ${SCREEN_WIDTH}x${SCREEN_HEIGHT}x${SCREEN_DEPTH} -ac +extension RANDR" /opt/firefox-${FIREFOX_VERSION}/firefox/firefox "$@"' >> /usr/bin/firefox &&\
     chmod +x /usr/bin/firefox
 
+RUN apt-get install -y chromium
+
+ADD xvfb-chromium /usr/bin/xvfb-chromium
+RUN ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome
+RUN ln -s /usr/bin/xvfb-chromium /usr/bin/chromium-browser
+
 # RUN mv /opt/google/chrome/google-chrome /opt/google/chrome/google-chrome.orig &&\
 #     echo '#!/bin/bash' > /opt/google/chrome/google-chrome &&\
 #     echo 'exec xvfb-run -a -s "-screen 0 ${SCREEN_WIDTH}x${SCREEN_HEIGHT}x${SCREEN_DEPTH} -ac +extension RANDR" /opt/google/chrome/google-chrome.orig --no-sandbox "$@"' >> /opt/google/chrome/google-chrome &&\
