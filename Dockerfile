@@ -1,7 +1,9 @@
 FROM aoberegg/docker-pmdrrnode
 
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-RUN nvm install 6.11.0
+RUN source ~/.nvm/nvm.sh
+RUN nvm use 6.11.0
+RUN node --version
 
 ENV FIREFOX_VERSION=59.0.2 PHANTOMJS_VERSION=2.1.1 CHROME_VERSION=stable_current \
     SCREEN_WIDTH=1000 SCREEN_HEIGHT=800 SCREEN_DEPTH=24
