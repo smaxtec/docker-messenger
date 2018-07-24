@@ -1,8 +1,14 @@
 FROM aoberegg/docker-pmdrrnode
 
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-RUN source ~/.nvm/nvm.sh
-RUN nvm use 6.11.0
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+# Install nvm and specific nodeversion
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 6.11.0
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash \
+    && source $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
 RUN node --version
 
 ENV FIREFOX_VERSION=59.0.2 PHANTOMJS_VERSION=2.1.1 CHROME_VERSION=stable_current \
