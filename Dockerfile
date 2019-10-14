@@ -1,6 +1,6 @@
 FROM mths/docker-pmdrr
 
-RUN apt-get install -y nodejs nodejs-legacy
+RUN apt-get install -y nodejs
 RUN apt-get install -y npm
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
